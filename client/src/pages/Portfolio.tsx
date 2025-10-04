@@ -5,17 +5,21 @@ import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import PageLoader from "@/components/PageLoader";
 
 export default function Portfolio() {
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Contact />
-      <Footer />
-    </div>
+    <>
+      <PageLoader />
+      <div className="min-h-screen bg-background">
+        <Navigation />
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Contact />
+        <Footer />
+      </div>
+    </>
   );
 }

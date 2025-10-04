@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink, Clock } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Projects() {
   const projects = [
@@ -38,70 +39,109 @@ export default function Projects() {
     },
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.5
+      }
+    }
+  };
+
   return (
     <section id="projects" className="py-16 md:py-24 lg:py-32 px-4 md:px-8">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-12 text-center" data-testid="heading-projects">
-          Featured Projects
-        </h2>
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-12 text-center" data-testid="heading-projects">
+            Featured Projects
+          </h2>
+        </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
           {projects.map((project, index) => (
-            <Card 
+            <motion.div
               key={project.title}
-              className={project.status === "coming-soon" ? "opacity-80" : ""}
+              variants={cardVariants}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
               data-testid={`project-${index}`}
             >
-              <CardHeader>
-                <div className="flex items-start justify-between gap-2">
-                  <CardTitle className="text-xl">{project.title}</CardTitle>
-                  {project.status === "coming-soon" && (
-                    <Badge variant="secondary" className="flex items-center gap-1">
-                      <Clock className="h-3 w-3" />
-                      Soon
-                    </Badge>
+              <Card 
+                className={`h-full transition-shadow hover:shadow-xl ${project.status === "coming-soon" ? "opacity-80" : ""}`}
+              >
+                <CardHeader>
+                  <div className="flex items-start justify-between gap-2">
+                    <CardTitle className="text-xl">{project.title}</CardTitle>
+                    {project.status === "coming-soon" && (
+                      <Badge variant="secondary" className="flex items-center gap-1">
+                        <Clock className="h-3 w-3" />
+                        Soon
+                      </Badge>
+                    )}
+                  </div>
+                  <CardDescription className="text-sm">
+                    {project.description}
+                  </CardDescription>
+                </CardHeader>
+                
+                <CardContent>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <Badge key={tag} variant="outline" className="text-xs">
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+                
+                <CardFooter>
+                  {project.status === "live" && project.link ? (
+                    <Button 
+                      variant="default"
+                      className="w-full gap-2"
+                      onClick={() => window.open(project.link, "_blank")}
+                      data-testid={`button-view-project-${index}`}
+                    >
+                      View Project
+                      <ExternalLink className="h-4 w-4" />
+                    </Button>
+                  ) : (
+                    <Button 
+                      variant="secondary"
+                      className="w-full"
+                      disabled
+                      data-testid={`button-coming-soon-${index}`}
+                    >
+                      Coming Soon
+                    </Button>
                   )}
-                </div>
-                <CardDescription className="text-sm">
-                  {project.description}
-                </CardDescription>
-              </CardHeader>
-              
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <Badge key={tag} variant="outline" className="text-xs">
-                      {tag}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-              
-              <CardFooter>
-                {project.status === "live" && project.link ? (
-                  <Button 
-                    variant="default"
-                    className="w-full gap-2"
-                    onClick={() => window.open(project.link, "_blank")}
-                    data-testid={`button-view-project-${index}`}
-                  >
-                    View Project
-                    <ExternalLink className="h-4 w-4" />
-                  </Button>
-                ) : (
-                  <Button 
-                    variant="secondary"
-                    className="w-full"
-                    disabled
-                    data-testid={`button-coming-soon-${index}`}
-                  >
-                    Coming Soon
-                  </Button>
-                )}
-              </CardFooter>
-            </Card>
+                </CardFooter>
+              </Card>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

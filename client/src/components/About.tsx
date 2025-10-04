@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Sparkles, Target, Rocket, Brain, Users, Award } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function About() {
   const highlights = [
@@ -25,10 +26,37 @@ export default function About() {
     }
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15
+      }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.5
+      }
+    }
+  };
+
   return (
     <section id="about" className="py-16 md:py-24 lg:py-32 px-4 md:px-8 bg-muted/30">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4">
             <Sparkles className="h-4 w-4 text-primary" />
             <span className="text-sm font-medium text-primary">About Me</span>
@@ -39,11 +67,17 @@ export default function About() {
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             A driven Computer Science student on a mission to create meaningful impact through technology
           </p>
-        </div>
+        </motion.div>
         
         <div className="space-y-8">
           {/* Main Bio */}
-          <div className="prose prose-lg max-w-none">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="prose prose-lg max-w-none"
+          >
             <Card>
               <CardContent className="pt-6 space-y-4">
                 <p className="text-base md:text-lg text-foreground leading-relaxed">
@@ -65,45 +99,80 @@ export default function About() {
                 </p>
               </CardContent>
             </Card>
-          </div>
+          </motion.div>
 
           {/* Highlights Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pt-8">
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pt-8"
+          >
             {highlights.map((item, index) => {
               const Icon = item.icon;
               return (
-                <Card key={index} className="hover-elevate transition-all">
-                  <CardContent className="pt-6">
-                    <div className="flex flex-col items-center text-center space-y-3">
-                      <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                        <Icon className="h-6 w-6 text-primary" />
+                <motion.div
+                  key={index}
+                  variants={cardVariants}
+                  whileHover={{ 
+                    y: -5,
+                    transition: { duration: 0.3 }
+                  }}
+                >
+                  <Card className="h-full hover-elevate transition-all">
+                    <CardContent className="pt-6">
+                      <div className="flex flex-col items-center text-center space-y-3">
+                        <motion.div 
+                          className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center"
+                          whileHover={{ 
+                            rotate: 360,
+                            scale: 1.1,
+                            transition: { duration: 0.5 }
+                          }}
+                        >
+                          <Icon className="h-6 w-6 text-primary" />
+                        </motion.div>
+                        <h3 className="font-semibold text-foreground">{item.title}</h3>
+                        <p className="text-sm text-muted-foreground">{item.description}</p>
                       </div>
-                      <h3 className="font-semibold text-foreground">{item.title}</h3>
-                      <p className="text-sm text-muted-foreground">{item.description}</p>
-                    </div>
-                  </CardContent>
-                </Card>
+                    </CardContent>
+                  </Card>
+                </motion.div>
               );
             })}
-          </div>
+          </motion.div>
 
           {/* Vision Statement */}
-          <Card className="bg-gradient-to-r from-primary/5 to-chart-2/5 border-primary/20">
-            <CardContent className="pt-6">
-              <div className="flex items-start gap-4">
-                <div className="h-12 w-12 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
-                  <Target className="h-6 w-6 text-primary" />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <Card className="bg-gradient-to-r from-primary/5 to-chart-2/5 border-primary/20">
+              <CardContent className="pt-6">
+                <div className="flex items-start gap-4">
+                  <motion.div 
+                    className="h-12 w-12 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0"
+                    whileHover={{ 
+                      rotate: [0, -10, 10, 0],
+                      transition: { duration: 0.5 }
+                    }}
+                  >
+                    <Target className="h-6 w-6 text-primary" />
+                  </motion.div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-foreground mb-2">My Mission</h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      To continuously expand my technical expertise, contribute to innovative solutions, and grow into a role where I can lead teams, 
+                      mentor others, and drive technological advancement that creates lasting value.
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-foreground mb-2">My Mission</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    To continuously expand my technical expertise, contribute to innovative solutions, and grow into a role where I can lead teams, 
-                    mentor others, and drive technological advancement that creates lasting value.
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          </motion.div>
         </div>
       </div>
     </section>
