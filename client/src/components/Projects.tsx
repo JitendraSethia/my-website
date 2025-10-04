@@ -13,6 +13,18 @@ export default function Projects() {
       tags: ["Full-Stack", "Real-time", "Database"],
     },
     {
+      title: "Amazon Clone",
+      description: "E-commerce platform replicating Amazon's core features including product listings, shopping cart, and checkout functionality.",
+      status: "coming-soon",
+      tags: ["React", "Node.js", "E-commerce"],
+    },
+    {
+      title: "Medical Pharmacy Website",
+      description: "Healthcare platform for online medicine ordering, prescription management, and pharmacy services.",
+      status: "coming-soon",
+      tags: ["Healthcare", "Web App", "Database"],
+    },
+    {
       title: "DSA Visualization Tool",
       description: "Interactive tool for visualizing data structures and algorithms to enhance learning and understanding.",
       status: "coming-soon",
