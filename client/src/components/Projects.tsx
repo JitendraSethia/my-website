@@ -60,6 +60,18 @@ export default function Projects() {
     }
   };
 
+  // Continuous floating animation variants
+  const floatingVariants = (index: number) => ({
+    animate: {
+      y: [0, -10, 0],
+      transition: {
+        duration: 3 + (index * 0.3),
+        repeat: Infinity,
+        ease: "easeInOut"
+      }
+    }
+  });
+
   return (
     <section id="projects" className="py-16 md:py-24 lg:py-32 px-4 md:px-8">
       <div className="max-w-6xl mx-auto">
@@ -85,20 +97,58 @@ export default function Projects() {
             <motion.div
               key={project.title}
               variants={cardVariants}
-              whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              {...floatingVariants(index)}
+              whileHover={{ 
+                y: -12,
+                scale: 1.02,
+                transition: { duration: 0.3 }
+              }}
               data-testid={`project-${index}`}
             >
               <Card 
-                className={`h-full transition-shadow hover:shadow-xl ${project.status === "coming-soon" ? "opacity-80" : ""}`}
+                className={`h-full transition-shadow hover:shadow-xl relative overflow-hidden ${project.status === "coming-soon" ? "opacity-80" : ""}`}
               >
-                <CardHeader>
+                {/* Animated gradient border effect */}
+                <motion.div
+                  className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300"
+                  style={{
+                    background: 'linear-gradient(45deg, transparent 30%, rgba(var(--primary), 0.1) 50%, transparent 70%)',
+                    backgroundSize: '200% 200%',
+                  }}
+                  animate={{
+                    backgroundPosition: ['0% 0%', '100% 100%', '0% 0%'],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                />
+                
+                <CardHeader className="relative z-10">
                   <div className="flex items-start justify-between gap-2">
                     <CardTitle className="text-xl">{project.title}</CardTitle>
                     {project.status === "coming-soon" && (
-                      <Badge variant="secondary" className="flex items-center gap-1">
-                        <Clock className="h-3 w-3" />
-                        Soon
-                      </Badge>
+                      <motion.div
+                        animate={{ 
+                          scale: [1, 1.1, 1],
+                        }}
+                        transition={{ 
+                          duration: 2,
+                          repeat: Infinity,
+                          ease: "easeInOut"
+                        }}
+                      >
+                        <Badge variant="secondary" className="flex items-center gap-1">
+                          <motion.div
+                            animate={{ rotate: 360 }}
+                            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                          >
+                            <Clock className="h-3 w-3" />
+                          </motion.div>
+                          Soon
+                        </Badge>
+                      </motion.div>
                     )}
                   </div>
                   <CardDescription className="text-sm">
@@ -106,27 +156,50 @@ export default function Projects() {
                   </CardDescription>
                 </CardHeader>
                 
-                <CardContent>
+                <CardContent className="relative z-10">
                   <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <Badge key={tag} variant="outline" className="text-xs">
-                        {tag}
-                      </Badge>
+                    {project.tags.map((tag, tagIndex) => (
+                      <motion.div
+                        key={tag}
+                        initial={{ opacity: 0, scale: 0 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: tagIndex * 0.1 }}
+                        whileHover={{ 
+                          scale: 1.1,
+                          transition: { duration: 0.2 }
+                        }}
+                      >
+                        <Badge variant="outline" className="text-xs">
+                          {tag}
+                        </Badge>
+                      </motion.div>
                     ))}
                   </div>
                 </CardContent>
                 
-                <CardFooter>
+                <CardFooter className="relative z-10">
                   {project.status === "live" && project.link ? (
-                    <Button 
-                      variant="default"
-                      className="w-full gap-2"
-                      onClick={() => window.open(project.link, "_blank")}
-                      data-testid={`button-view-project-${index}`}
+                    <motion.div
+                      className="w-full"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
                     >
-                      View Project
-                      <ExternalLink className="h-4 w-4" />
-                    </Button>
+                      <Button 
+                        variant="default"
+                        className="w-full gap-2"
+                        onClick={() => window.open(project.link, "_blank")}
+                        data-testid={`button-view-project-${index}`}
+                      >
+                        View Project
+                        <motion.div
+                          animate={{ x: [0, 3, 0] }}
+                          transition={{ duration: 1.5, repeat: Infinity }}
+                        >
+                          <ExternalLink className="h-4 w-4" />
+                        </motion.div>
+                      </Button>
+                    </motion.div>
                   ) : (
                     <Button 
                       variant="secondary"
