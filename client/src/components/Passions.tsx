@@ -1,0 +1,196 @@
+import { Card, CardContent } from "@/components/ui/card";
+import { Code, Rocket, Brain, Users, Lightbulb, Trophy, BookOpen, Zap } from "lucide-react";
+import { motion } from "framer-motion";
+
+export default function Passions() {
+  const passions = [
+    {
+      icon: Code,
+      title: "Clean Code",
+      description: "Writing elegant, maintainable code that others can understand and build upon",
+      color: "from-blue-500 to-cyan-500"
+    },
+    {
+      icon: Rocket,
+      title: "Innovation",
+      description: "Exploring cutting-edge technologies and pushing the boundaries of what's possible",
+      color: "from-purple-500 to-pink-500"
+    },
+    {
+      icon: Brain,
+      title: "Problem Solving",
+      description: "Tackling complex challenges and finding creative, efficient solutions",
+      color: "from-orange-500 to-red-500"
+    },
+    {
+      icon: Users,
+      title: "Collaboration",
+      description: "Working with diverse teams to build amazing products together",
+      color: "from-green-500 to-emerald-500"
+    },
+    {
+      icon: Lightbulb,
+      title: "Continuous Learning",
+      description: "Always staying curious and expanding my knowledge in new domains",
+      color: "from-yellow-500 to-orange-500"
+    },
+    {
+      icon: Trophy,
+      title: "Excellence",
+      description: "Striving for quality in every line of code and every project delivered",
+      color: "from-indigo-500 to-purple-500"
+    }
+  ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { 
+      opacity: 1, 
+      scale: 1,
+      transition: {
+        duration: 0.5
+      }
+    }
+  };
+
+  return (
+    <section id="passions" className="py-16 md:py-24 lg:py-32 px-4 md:px-8">
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4">
+              <Zap className="h-4 w-4 text-primary" />
+              <span className="text-sm font-medium text-primary">My Passions</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-4" data-testid="heading-passions">
+              What I'm Passionate About
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              The driving forces behind my work and the principles that guide my journey
+            </p>
+          </div>
+        </motion.div>
+
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          {passions.map((passion, index) => {
+            const Icon = passion.icon;
+            return (
+              <motion.div
+                key={index}
+                variants={cardVariants}
+                whileHover={{ 
+                  y: -8,
+                  transition: { duration: 0.3 }
+                }}
+                data-testid={`passion-${index}`}
+              >
+                <Card className="h-full hover-elevate transition-all relative overflow-hidden group">
+                  {/* Animated gradient background on hover */}
+                  <motion.div
+                    className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300"
+                    style={{
+                      background: `linear-gradient(135deg, var(--primary), var(--chart-2))`,
+                    }}
+                    animate={{
+                      scale: [1, 1.2, 1],
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  />
+                  
+                  <CardContent className="pt-6 relative z-10">
+                    <div className="flex flex-col items-center text-center space-y-4">
+                      <motion.div 
+                        className="h-16 w-16 rounded-2xl bg-gradient-to-br from-primary/20 to-chart-2/20 flex items-center justify-center relative"
+                        whileHover={{ 
+                          rotate: [0, -10, 10, -10, 0],
+                          scale: 1.1
+                        }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        <motion.div
+                          animate={{ 
+                            rotate: 360,
+                          }}
+                          transition={{ 
+                            duration: 20,
+                            repeat: Infinity,
+                            ease: "linear"
+                          }}
+                          className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/10 to-chart-2/10"
+                        />
+                        <Icon className="h-8 w-8 text-primary relative z-10" />
+                      </motion.div>
+                      
+                      <div>
+                        <h3 className="text-xl font-semibold text-foreground mb-2">
+                          {passion.title}
+                        </h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          {passion.description}
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+
+        {/* Mission Statement */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-12"
+        >
+          <Card className="bg-gradient-to-r from-primary/5 to-chart-2/5 border-primary/20">
+            <CardContent className="pt-6">
+              <div className="text-center space-y-4">
+                <motion.div
+                  animate={{ scale: [1, 1.1, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  className="inline-block"
+                >
+                  <BookOpen className="h-12 w-12 text-primary mx-auto" />
+                </motion.div>
+                <h3 className="text-2xl font-semibold text-foreground">My Philosophy</h3>
+                <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                  "Technology is not just about building applications; it's about creating experiences that empower people, 
+                  solve real problems, and make the world a little bit better. Every line of code is an opportunity to make 
+                  a positive impact."
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
+      </div>
+    </section>
+  );
+}

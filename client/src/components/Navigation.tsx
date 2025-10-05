@@ -6,7 +6,10 @@ export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
-    { name: "About", href: "#about" },
+    { name: "Home", href: "#hero" },
+    { name: "About", href: "#about-me" },
+    { name: "Education", href: "#education" },
+    { name: "Passions", href: "#passions" },
     { name: "Skills", href: "#skills" },
     { name: "Projects", href: "#projects" },
     { name: "Contact", href: "#contact" },
