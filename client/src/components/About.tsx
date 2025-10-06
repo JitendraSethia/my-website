@@ -81,20 +81,21 @@ export default function About() {
             <Card>
               <CardContent className="pt-6 space-y-4">
                 <p className="text-base md:text-lg text-foreground leading-relaxed">
-                  I'm a 3rd-year B.Tech student in Computer Science & Engineering, passionate about leveraging technology to solve real-world problems. 
+                  I'm a 2nd-year B.Tech student in Computer Science & Engineering, passionate about leveraging technology to solve real-world problems. 
                   With a solid foundation in programming, software development, and data structures, I thrive on building efficient, scalable solutions 
                   that make a tangible difference.
                 </p>
                 
                 <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                  What drives me? The excitement of transforming complex challenges into elegant solutions. Whether it's optimizing algorithms, 
-                  designing intuitive interfaces, or architecting robust systems, I bring dedication, creativity, and analytical thinking to every project. 
-                  I'm actively seeking internship and remote opportunities where I can contribute my skills while learning from industry experts.
+                  What drives me? The opportunity to manage and lead teams toward success. Whether it's coordinating frontend development, 
+                  fostering collaboration among team members, or creating user-centric interfaces, I bring dedication, leadership skills, and 
+                  creativity to every project. I'm actively seeking internship and remote opportunities where I can contribute my skills while 
+                  learning from industry experts.
                 </p>
                 
                 <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                  My career vision encompasses <strong className="text-foreground">Software Engineering</strong>, <strong className="text-foreground">Product Development</strong>, 
-                  and <strong className="text-foreground">Data-Driven Solutions</strong>, with aspirations to grow into tech leadership and management roles. 
+                  My career vision encompasses <strong className="text-foreground">Frontend Development</strong>, <strong className="text-foreground">Team Leadership</strong>, 
+                  and <strong className="text-foreground">User Experience Design</strong>, with aspirations to grow into tech leadership and management roles. 
                   I'm particularly interested in opportunities that challenge me to learn cutting-edge technologies and contribute to products that positively impact users' lives.
                 </p>
               </CardContent>
@@ -165,8 +166,8 @@ export default function About() {
                   <div>
                     <h3 className="text-xl font-semibold text-foreground mb-2">My Mission</h3>
                     <p className="text-muted-foreground leading-relaxed">
-                      To continuously expand my technical expertise, contribute to innovative solutions, and grow into a role where I can lead teams, 
-                      mentor others, and drive technological advancement that creates lasting value.
+                      To continuously expand my technical expertise in frontend development, contribute to innovative solutions, and grow into a role where 
+                      I can lead and manage teams, mentor others, and drive technological advancement that creates lasting value through exceptional user experiences.
                     </p>
                   </div>
                 </div>

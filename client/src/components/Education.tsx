@@ -9,13 +9,24 @@ export default function Education() {
       field: "Computer Science & Engineering",
       institution: "Your University Name",
       location: "City, State",
-      period: "2022 - 2026",
-      status: "3rd Year - In Progress",
-      highlights: [
-        "Relevant Coursework: Data Structures, Algorithms, Web Development, Database Management",
-        "Focus on Software Engineering and Full-Stack Development",
-        "Active participation in coding competitions and technical events"
-      ]
+      period: "2023 - 2027",
+      status: "2nd Year - In Progress"
+    },
+    {
+      degree: "Class 12",
+      field: "Computer Science",
+      institution: "Pearls of God",
+      location: "City, State",
+      period: "2023",
+      percentage: "87.75%"
+    },
+    {
+      degree: "Class 10",
+      field: "General",
+      institution: "Pearls of God",
+      location: "City, State",
+      period: "2021",
+      percentage: "86%"
     }
   ];
 
@@ -103,35 +114,22 @@ export default function Education() {
                           <Calendar className="h-4 w-4" />
                           <span className="text-sm">{edu.period}</span>
                         </div>
+                        {edu.status && (
                         <div className="flex items-center gap-2">
                           <Award className="h-4 w-4 text-primary" />
                           <span className="text-sm font-medium text-primary">{edu.status}</span>
                         </div>
+                      )}
+                      {edu.percentage && (
+                        <div className="flex items-center gap-2">
+                          <Award className="h-4 w-4 text-primary" />
+                          <span className="text-sm font-medium text-primary">{edu.percentage}</span>
+                        </div>
+                      )}
                       </div>
                     </div>
                   </div>
                 </CardHeader>
-
-                <CardContent>
-                  <div className="space-y-3">
-                    <h4 className="font-semibold text-foreground">Key Highlights:</h4>
-                    <ul className="space-y-2">
-                      {edu.highlights.map((highlight, idx) => (
-                        <motion.li
-                          key={idx}
-                          initial={{ opacity: 0, x: -10 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: idx * 0.1 }}
-                          className="flex items-start gap-2 text-muted-foreground"
-                        >
-                          <div className="h-1.5 w-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                          <span className="text-sm">{highlight}</span>
-                        </motion.li>
-                      ))}
-                    </ul>
-                  </div>
-                </CardContent>
               </Card>
             </motion.div>
           ))}

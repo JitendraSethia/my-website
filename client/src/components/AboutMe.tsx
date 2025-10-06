@@ -114,7 +114,7 @@ export default function AboutMe() {
                   <div>
                     <h3 className="text-xl font-semibold text-foreground mb-2">My Journey</h3>
                     <p className="text-muted-foreground leading-relaxed">
-                      From writing my first "Hello World" to building full-stack applications, my journey has been driven 
+                      From writing my first "Hello World" to building frontend applications, my journey has been driven 
                       by curiosity and the desire to create meaningful solutions. Every project teaches me something new, 
                       and I'm always excited to push the boundaries of what I can build.
                     </p>
@@ -131,9 +131,9 @@ export default function AboutMe() {
                   <div>
                     <h3 className="text-xl font-semibold text-foreground mb-2">What Drives Me</h3>
                     <p className="text-muted-foreground leading-relaxed">
-                      I'm motivated by the impact my work can have on real people. Whether it's optimizing an algorithm 
-                      to save processing time or designing an intuitive interface that makes technology accessible, 
-                      I find joy in creating solutions that matter.
+                      I'm driven by the opportunity to manage and lead teams toward success. I'm passionate about 
+                      fostering collaboration, mentoring team members, and creating an environment where everyone can 
+                      contribute their best work while achieving collective goals.
                     </p>
                   </div>
                 </div>

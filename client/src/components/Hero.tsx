@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import coverImage from "@assets/Gemini_Generated_Image_lust37lust37lust_1759618785523.png";
 import profileImage from "@assets/Gemini_Generated_Image_wbis7cwbis7cwbis (1)_1759618785524.png";
 import { motion } from "framer-motion";
+import SignatureAnimation from "./SignatureAnimation";
 
 export default function Hero() {
   const scrollToProjects = () => {
@@ -27,6 +28,7 @@ export default function Hero() {
           style={{ backgroundImage: `url(${coverImage})` }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/90 to-background" />
+        <SignatureAnimation />
       </div>
 
       {/* Content */}

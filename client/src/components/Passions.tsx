@@ -1,44 +1,26 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Code, Rocket, Brain, Users, Lightbulb, Trophy, BookOpen, Zap } from "lucide-react";
+import { Users, Target, Megaphone, GraduationCap, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Passions() {
   const passions = [
     {
-      icon: Code,
-      title: "Clean Code",
-      description: "Writing elegant, maintainable code that others can understand and build upon",
+      icon: Users,
+      title: "Team Collaboration",
+      description: "Working with diverse teams to build amazing products together and fostering a collaborative environment",
       color: "from-blue-500 to-cyan-500"
     },
     {
-      icon: Rocket,
-      title: "Innovation",
-      description: "Exploring cutting-edge technologies and pushing the boundaries of what's possible",
+      icon: Target,
+      title: "User Experience (UX) Focus",
+      description: "Building intuitive, accessible interfaces and features that put the user experience first, ensuring technology is a joy, not a hurdle",
       color: "from-purple-500 to-pink-500"
     },
     {
-      icon: Brain,
-      title: "Problem Solving",
-      description: "Tackling complex challenges and finding creative, efficient solutions",
+      icon: Megaphone,
+      title: "Marketing & Social Media",
+      description: "Passionate about digital marketing and social media management, creating impactful campaigns and engaging content",
       color: "from-orange-500 to-red-500"
-    },
-    {
-      icon: Users,
-      title: "Collaboration",
-      description: "Working with diverse teams to build amazing products together",
-      color: "from-green-500 to-emerald-500"
-    },
-    {
-      icon: Lightbulb,
-      title: "Continuous Learning",
-      description: "Always staying curious and expanding my knowledge in new domains",
-      color: "from-yellow-500 to-orange-500"
-    },
-    {
-      icon: Trophy,
-      title: "Excellence",
-      description: "Striving for quality in every line of code and every project delivered",
-      color: "from-indigo-500 to-purple-500"
     }
   ];
 
@@ -162,7 +144,7 @@ export default function Passions() {
           })}
         </motion.div>
 
-        {/* Mission Statement */}
+        {/* Student Vision Statement */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -178,13 +160,13 @@ export default function Passions() {
                   transition={{ duration: 2, repeat: Infinity }}
                   className="inline-block"
                 >
-                  <BookOpen className="h-12 w-12 text-primary mx-auto" />
+                  <GraduationCap className="h-12 w-12 text-primary mx-auto" />
                 </motion.div>
-                <h3 className="text-2xl font-semibold text-foreground">My Philosophy</h3>
+                <h3 className="text-2xl font-semibold text-foreground">My Vision as a Student</h3>
                 <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                  "Technology is not just about building applications; it's about creating experiences that empower people, 
-                  solve real problems, and make the world a little bit better. Every line of code is an opportunity to make 
-                  a positive impact."
+                  "As a student, I'm on a journey of continuous growth and exploration. Every challenge is an opportunity to learn, 
+                  every project is a chance to innovate, and every collaboration is a step toward becoming not just a better developer, 
+                  but a better leader and team player. I believe in learning by doing, growing by sharing, and succeeding together."
                 </p>
               </div>
             </CardContent>
