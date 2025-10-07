@@ -10,7 +10,7 @@ export default function Education() {
       institution: "Your University Name",
       location: "City, State",
       period: "2023 - 2027",
-      status: "2nd Year - In Progress"
+      status: "3rd Year - In Progress"
     },
     {
       degree: "Class 12",
