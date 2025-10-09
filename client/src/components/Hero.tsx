@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import coverImage from "@assets/Gemini_Generated_Image_lust37lust37lust_1759618785523.png";
-import profileImage from "@/assets/my-new-photo.png";
+import profileImage from "@assets/my-new-photo.png";
 import { motion } from "framer-motion";
 import SignatureAnimation from "./SignatureAnimation";
 
